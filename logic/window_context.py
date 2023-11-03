@@ -1,26 +1,12 @@
-from dataclasses import dataclass
 from threading import Thread
 from time import sleep
-from typing import Callable
 
+import psutil
 import win32gui
 import win32process
-import psutil
 
-
-@dataclass
-class WindowInfo:
-    pid: int
-    title: str
-    process: str
-    path: str
-
-    def __str__(self):
-        return self.process.split(".exe")[0].capitalize()
-
-    def __repr__(self):
-        return self.__str__()
-
+from DataClasses import WindowInfo
+from utils import Event
 
 
 class WindowContextManager:
@@ -30,8 +16,8 @@ class WindowContextManager:
         self.history_buffer = 10
         self.history: list[WindowInfo] = []
         self._is_running = False
-        self.listeners: list[Callable] = []
         self.thread: Thread | None = None
+        self.on_window_changed: Event = Event[WindowContextManager]()
 
     @staticmethod
     def _capture() -> WindowInfo:
@@ -56,16 +42,12 @@ class WindowContextManager:
             else:
                 self.current_window = window
                 self._history_append(window)
-                self._on_current_change()
+                self.on_window_changed.invoke(self)
 
     def _history_append(self, window):
         self.history.insert(0, window)
         if len(self.history) > self.history_buffer:
             self.history.pop()
-
-    def _on_current_change(self):
-        for el in self.listeners:
-            el(self)
 
     def start(self):
         self._is_running = True
