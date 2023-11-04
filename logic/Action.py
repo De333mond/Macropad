@@ -1,2 +1,3 @@
 class Action:
-    pass
+    def get_config(self):
+        return '?'

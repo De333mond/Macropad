@@ -1,6 +1,8 @@
+import json
 from dataclasses import dataclass
 
 from logic.Action import Action
+from logic.utils import EnhancedJSONEncoder
 
 
 @dataclass
@@ -28,17 +30,18 @@ class Button:
 class Encoder:
     label: str
     actionMinus: Action
-    actionPlus: Action
+    actionPush: Action
     actionPlus: Action
 
 
 @dataclass
 class ContextConfig:
-    title: str
     image: str
-    window: WindowInfo
+    window: WindowInfo | None
     buttons: list[Button]
     current_encoder: int
     encoders: list[Encoder]
 
 
+if __name__ == "__main__":
+    pass
