@@ -1,0 +1,27 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>icons/accept_cr.svg</file>
+    <file>icons/accept_sq.svg</file>
+    <file>icons/add_sq.svg</file>
+    <file>icons/add_sq-1.svg</file>
+    <file>icons/arrow_cr.svg</file>
+    <file>icons/arrow_sq.svg</file>
+    <file>icons/next_cr.svg</file>
+    <file>icons/next_sq.svg</file>
+    <file>icons/no_1.svg</file>
+    <file>icons/no_2.svg</file>
+    <file>icons/no_3.svg</file>
+    <file>icons/no_cr.svg</file>
+    <file>icons/no_cr-1.svg</file>
+    <file>icons/no_sq.svg</file>
+    <file>icons/pause_cr.svg</file>
+    <file>icons/pause_sq.svg</file>
+    <file>icons/play_cr.svg</file>
+    <file>icons/play_sq.svg</file>
+    <file>icons/rec_cr.svg</file>
+    <file>icons/rec_sq.svg</file>
+    <file>icons/remove_sq.svg</file>
+    <file>icons/stop_cr.svg</file>
+    <file>icons/stop_sq.svg</file>
+  </qresource>
+</RCC>

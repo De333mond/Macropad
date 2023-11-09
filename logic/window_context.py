@@ -17,7 +17,7 @@ class WindowContextManager:
         self.history: list[WindowInfo] = []
         self._is_running = False
         self.thread: Thread | None = None
-        self.on_window_changed: Event = Event[WindowContextManager]()
+        self.on_window_changed: Event = Event[WindowInfo]()
 
     @staticmethod
     def _capture() -> WindowInfo:
@@ -42,7 +42,7 @@ class WindowContextManager:
             else:
                 self.current_window = window
                 self._history_append(window)
-                self.on_window_changed.invoke(self)
+                self.on_window_changed.invoke(window)
 
     def _history_append(self, window):
         self.history.insert(0, window)

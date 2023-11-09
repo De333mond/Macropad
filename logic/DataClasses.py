@@ -37,6 +37,7 @@ class Encoder:
 @dataclass
 class ContextConfig:
     image: str
+    title: str
     window: WindowInfo | None
     buttons: list[Button]
     current_encoder: int
